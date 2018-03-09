@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class StateMachineTest {
+	
     StateContext sc;
     
     @Before
@@ -17,6 +18,7 @@ public class StateMachineTest {
     /*
      * Test Sequence: A
      */
+    
     @Test
     public void test_1() {
         sc.actionA();
@@ -26,6 +28,7 @@ public class StateMachineTest {
     /*
      * Test Sequence: B
      */
+    
     @Test
     public void test_2() {
         sc.actionB();
@@ -35,8 +38,10 @@ public class StateMachineTest {
     /*
      * Test Sequence: ABABA
      */
+    
     @Test
     public void test_3() {
+    	
         sc.actionA();
         assertTrue(sc.isAccept());
         sc.actionB();
@@ -47,38 +52,63 @@ public class StateMachineTest {
         assertFalse(sc.isAccept());
         sc.actionA();
         assertTrue(sc.isAccept());
+        
     }
     
     /*
      * Test Sequence: BAB
      */
+    
     @Test
     public void test_4() {
+    	
         sc.actionB();
         sc.actionA();
         sc.actionB();
         assertTrue(sc.isAccept());
+        
     }
     
     /*
      * Test Sequence: AAB
      */
     @Test
+    
     public void test_5() {
+    	
         sc.actionA();
         sc.actionA();
         sc.actionB();
         assertFalse(sc.isAccept());
+        
     }
     
     /*
      * Test Sequence: BAA
      */
+    
     @Test
     public void test_6() {
+    	
         sc.actionB();
         sc.actionA();
         sc.actionA();
         assertFalse(sc.isAccept());
+        
     }
+    
+    /*
+     * Test Sequence: ABA
+     */
+    
+    @Test
+    public void test_7() {
+    	
+        sc.actionA();
+        sc.actionB();
+        sc.actionA();
+        assertTrue(sc.isAccept());
+        
+    }
+    
 }
